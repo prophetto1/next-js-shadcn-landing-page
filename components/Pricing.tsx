@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
@@ -9,7 +11,7 @@ const pricingData = [
     description: "Perfect for getting started with P2P trading",
     features: [
       "Top 10 opportunities daily",
-      "Basic risk scoring", 
+      "Basic risk scoring",
       "3 major exchanges (Binance, OKX, Bybit)",
       "Email alerts",
       "Community support"
@@ -21,13 +23,13 @@ const pricingData = [
     }
   },
   {
-    title: "Pro", 
+    title: "Pro",
     price: "$49",
     description: "For serious P2P traders and arbitrageurs",
     features: [
       "Unlimited opportunities",
       "Advanced AI risk analysis",
-      "All 8+ exchanges", 
+      "All 8+ exchanges",
       "Real-time alerts",
       "API access",
       "Historical data",
@@ -41,12 +43,12 @@ const pricingData = [
   },
   {
     title: "Enterprise",
-    price: "$199", 
+    price: "$199",
     description: "For trading firms and institutions",
     features: [
       "Everything in Pro",
       "White-label solution",
-      "Custom integrations", 
+      "Custom integrations",
       "Team collaboration",
       "Advanced analytics",
       "Dedicated support",
@@ -76,7 +78,7 @@ export const Pricing = () => {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {pricingData.map(({ title, price, description, features, buttonText, popular, action }) => (
-          <Card 
+          <Card
             key={title}
             onClick={action}
             className={`${
@@ -90,7 +92,7 @@ export const Pricing = () => {
                 </span>
               </div>
             )}
-            
+           
             <CardHeader className="text-center">
               <CardTitle className="text-2xl">
                 {title}
@@ -116,10 +118,10 @@ export const Pricing = () => {
             </CardContent>
 
             <CardFooter className="pt-6">
-              <Button 
+              <Button
                 className={`w-full text-lg py-6 transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg ${
-                  popular 
-                    ? "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white" 
+                  popular
+                    ? "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
                     : "group-hover:bg-primary group-hover:text-primary-foreground"
                 }`}
                 variant={popular ? "default" : "outline"}
