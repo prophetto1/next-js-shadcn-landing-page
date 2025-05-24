@@ -15,7 +15,10 @@ const pricingData = [
       "Community support"
     ],
     buttonText: "Get Started Free",
-    popular: false
+    popular: false,
+    action: () => {
+      window.open("mailto:hello@p2pintelligence.com?subject=Free Plan Signup", "_blank");
+    }
   },
   {
     title: "Pro", 
@@ -31,7 +34,10 @@ const pricingData = [
       "Priority support"
     ],
     buttonText: "Start Pro Trial",
-    popular: true
+    popular: true,
+    action: () => {
+      window.open("mailto:hello@p2pintelligence.com?subject=Pro Plan Trial", "_blank");
+    }
   },
   {
     title: "Enterprise",
@@ -47,7 +53,10 @@ const pricingData = [
       "Custom alerts"
     ],
     buttonText: "Contact Sales",
-    popular: false
+    popular: false,
+    action: () => {
+      window.open("mailto:sales@p2pintelligence.com?subject=Enterprise Plan Inquiry", "_blank");
+    }
   }
 ];
 
@@ -66,50 +75,55 @@ export const Pricing = () => {
       </p>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {pricingData.map(({ title, price, description, features, buttonText, popular }) => (
+        {pricingData.map(({ title, price, description, features, buttonText, popular, action }) => (
           <Card 
             key={title}
-            className={`${popular ? "border-2 border-primary shadow-xl scale-105" : "hover:shadow-lg"} relative transition-all duration-300 hover:scale-105`}
+            onClick={action}
+            className={`${
+              popular ? "border-2 border-primary shadow-xl scale-105" : "border hover:border-primary/50"
+            } relative transition-all duration-300 hover:scale-110 hover:shadow-2xl cursor-pointer group bg-card hover:bg-accent/50`}
           >
             {popular && (
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-1 rounded-full text-sm font-medium">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
+                <span className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-1 rounded-full text-sm font-medium shadow-lg">
                   Most Popular
                 </span>
               </div>
             )}
-            <CardHeader>
-              <CardTitle className="flex items-center justify-between">
+            
+            <CardHeader className="text-center">
+              <CardTitle className="text-2xl">
                 {title}
               </CardTitle>
-              <div>
-                <span className="text-3xl font-bold">{price}</span>
-                <span className="text-muted-foreground">/month</span>
+              <div className="py-4">
+                <span className="text-4xl font-bold">{price}</span>
+                <span className="text-muted-foreground text-lg">/month</span>
               </div>
-              <CardDescription>
+              <CardDescription className="text-base">
                 {description}
               </CardDescription>
             </CardHeader>
 
-            <CardContent>
-              <ul className="space-y-2">
+            <CardContent className="flex-1">
+              <ul className="space-y-3">
                 {features.map((feature) => (
                   <li key={feature} className="flex items-center">
-                    <Check className="text-green-500 mr-2 h-4 w-4 flex-shrink-0" />
+                    <Check className="text-green-500 mr-3 h-5 w-5 flex-shrink-0" />
                     <span className="text-muted-foreground">{feature}</span>
                   </li>
                 ))}
               </ul>
             </CardContent>
 
-            <CardFooter>
+            <CardFooter className="pt-6">
               <Button 
-                className={`w-full transition-all duration-300 ${
+                className={`w-full text-lg py-6 transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg ${
                   popular 
-                    ? "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700" 
-                    : ""
+                    ? "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white" 
+                    : "group-hover:bg-primary group-hover:text-primary-foreground"
                 }`}
                 variant={popular ? "default" : "outline"}
+                size="lg"
               >
                 {buttonText}
               </Button>
