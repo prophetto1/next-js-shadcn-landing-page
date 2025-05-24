@@ -1,74 +1,88 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-const faqs = [
+const features = [
   {
-    question: "What is P2P crypto trading?",
-    answer:
-      "P2P (peer-to-peer) crypto trading allows you to buy and sell cryptocurrencies directly with other users, often at better rates than traditional exchanges. Our platform helps you find the most profitable opportunities across multiple P2P marketplaces.",
+    title: "🤖 AI Terms Analysis",
+    description: "Gemini AI automatically extracts and analyzes trading requirements from human-readable terms with 99% accuracy.",
+    badge: "AI-Powered"
   },
   {
-    question: "How does the AI analysis work?",
-    answer:
-      "Our Gemini AI automatically reads and analyzes thousands of P2P advertisements, extracting trading requirements, payment methods, and risk factors. It then scores each opportunity based on profit potential and execution probability.",
+    title: "⚡ Real-Time Monitoring", 
+    description: "50,000+ P2P advertisements analyzed every hour across 8 major exchanges for instant opportunities.",
+    badge: "Live Data"
   },
   {
-    question: "Which exchanges do you support?",
-    answer:
-      "We currently support 8+ major exchanges including Binance, OKX, Bybit, KuCoin, Huobi, Gate.io, Kraken, and more. We&apos;re constantly adding new platforms based on user demand.",
+    title: "🎯 Smart Risk Scoring",
+    description: "AI-powered risk assessment based on merchant history, terms complexity, and market conditions.",
+    badge: "Risk Management"
   },
   {
-    question: "How accurate is the risk scoring?",
-    answer:
-      "Our AI risk scoring achieves 99% accuracy by analyzing merchant history, completion rates, trading terms complexity, and market conditions. Each opportunity is scored from low to high risk with detailed explanations.",
+    title: "💱 Multi-Exchange Coverage",
+    description: "Connected to Binance, OKX, Bybit, KuCoin, Huobi, Gate.io, Kraken and more for comprehensive coverage.",
+    badge: "8+ Exchanges"
   },
   {
-    question: "Can I use this for arbitrage trading?",
-    answer:
-      "Absolutely! Our platform is specifically designed for arbitrage traders. We automatically detect price differences between exchanges and calculate potential profits, including fees and execution risks.",
+    title: "📈 Arbitrage Detection", 
+    description: "Automatic detection of profitable price differences between exchanges with profit calculations.",
+    badge: "Profit Focused"
   },
   {
-    question: "Do you store my trading data?",
-    answer:
-      "We only analyze public P2P advertisement data. We never access your personal trading accounts or store any sensitive information. Your privacy and security are our top priorities.",
-  },
-  {
-    question: "What&apos;s included in the free plan?",
-    answer:
-      "The free plan includes access to the top 10 daily opportunities, basic risk scoring, and coverage of 3 major exchanges (Binance, OKX, Bybit). Perfect for getting started with P2P trading intelligence.",
-  },
-  {
-    question: "How do I get started?",
-    answer:
-      "Simply sign up for a free account to start seeing profitable P2P opportunities immediately. No credit card required for the free tier. Upgrade to Pro when you&apos;re ready for unlimited access and advanced features.",
-  },
+    title: "🔔 Smart Alerts",
+    description: "Customizable notifications for opportunities matching your risk tolerance and profit targets.",
+    badge: "Personalized"
+  }
 ];
 
-export const FAQ = () => {
+export const Features = () => {
   return (
-    <section id="faq" className="container py-24 sm:py-32">
-      <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-        Frequently Asked{" "}
+    <section className="container py-24 sm:py-32 space-y-8">
+      <h2 className="text-3xl lg:text-4xl font-bold md:text-center">
+        AI-Powered{" "}
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          Questions
+          P2P Trading Intelligence
         </span>
       </h2>
+      <div className="flex flex-wrap md:justify-center gap-4">
+        <div>
+          <Badge variant="secondary" className="text-sm">
+            Cross-Platform
+          </Badge>
+        </div>
+        <div>
+          <Badge variant="secondary" className="text-sm">
+            Real-Time
+          </Badge>
+        </div>
+        <div>
+          <Badge variant="secondary" className="text-sm">
+            AI-Enhanced
+          </Badge>
+        </div>
+        <div>
+          <Badge variant="secondary" className="text-sm">
+            Risk-Aware
+          </Badge>
+        </div>
+      </div>
 
-      <Accordion type="single" collapsible className="w-full AccordionRoot">
-        {faqs.map(({ question, answer }, index) => (
-          <AccordionItem key={index} value={`item-${index}`}>
-            <AccordionTrigger className="text-left">
-              {question}
-            </AccordionTrigger>
-
-            <AccordionContent>{answer}</AccordionContent>
-          </AccordionItem>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {features.map(({ title, description, badge }) => (
+          <Card key={title}>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                {title}
+                <Badge variant="outline" className="ml-auto">
+                  {badge}
+                </Badge>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="text-muted-foreground">
+              {description}
+            </CardContent>
+          </Card>
         ))}
-      </Accordion>
+      </div>
     </section>
   );
 };
