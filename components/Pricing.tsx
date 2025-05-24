@@ -1,3 +1,4 @@
+// src/components/Pricing.tsx
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -29,7 +30,7 @@ const pricingData: PricingPlan[] = [
     buttonText: "Get Started Free",
     popular: false,
     action: () => {
-      if (typeof window !== 'undefined') {
+      if (typeof window !== 'undefined') { // This check is fine
         window.open("mailto:hello@p2pintelligence.com?subject=Free Plan Signup", "_blank");
       }
     }
@@ -80,7 +81,7 @@ const pricingData: PricingPlan[] = [
 
 export const Pricing = () => {
   return (
-    <section id="pricing" className="container py-24 sm:py-32 scroll-mt-20">
+    <section id="pricing" className="container py-24 sm:py-32 scroll-mt-20"> {/* Added scroll-mt and id */}
       <h2 className="text-3xl md:text-4xl font-bold text-center">
         Choose Your
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
@@ -96,10 +97,10 @@ export const Pricing = () => {
         {pricingData.map(({ title, price, description, features, buttonText, popular, action }) => (
           <Card
             key={title}
-            onClick={action}
+            // onClick={action} // It's generally better to put onClick on the Button itself for clearer intent
             className={`${
-              popular ? "border-2 border-primary shadow-xl scale-105" : "border hover:border-primary/50"
-            } relative transition-all duration-300 hover:scale-110 hover:shadow-2xl cursor-pointer group bg-card hover:bg-accent/50`}
+              popular ? "border-2 border-primary shadow-xl lg:scale-105" : "border hover:border-primary/50" // Adjusted scale for lg only
+            } relative transition-all duration-300 hover:scale-105 hover:shadow-2xl group bg-card hover:bg-accent/50 flex flex-col`} // Added flex flex-col
           >
             {popular && (
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
@@ -108,7 +109,7 @@ export const Pricing = () => {
                 </span>
               </div>
             )}
-           
+            
             <CardHeader className="text-center">
               <CardTitle className="text-2xl">
                 {title}
@@ -117,12 +118,12 @@ export const Pricing = () => {
                 <span className="text-4xl font-bold">{price}</span>
                 <span className="text-muted-foreground text-lg">/month</span>
               </div>
-              <CardDescription className="text-base">
+              <CardDescription className="text-base min-h-[3em]"> {/* Added min-h for description consistency */}
                 {description}
               </CardDescription>
             </CardHeader>
 
-            <CardContent className="flex-1">
+            <CardContent className="flex-grow"> {/* Changed to flex-grow */}
               <ul className="space-y-3">
                 {features.map((feature) => (
                   <li key={feature} className="flex items-center">
@@ -133,8 +134,9 @@ export const Pricing = () => {
               </ul>
             </CardContent>
 
-            <CardFooter className="pt-6">
+            <CardFooter className="pt-6 mt-auto"> {/* Added mt-auto to push footer to bottom */}
               <Button
+                onClick={action} // Moved onClick to the button
                 className={`w-full text-lg py-6 transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg ${
                   popular
                     ? "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
