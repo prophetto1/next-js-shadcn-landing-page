@@ -27,11 +27,9 @@ export const About = () => {
     >
       <div className="bg-muted/50 border rounded-lg py-12">
         <div className="px-6 flex flex-col-reverse md:flex-row gap-8 md:gap-12">
-          <img
-            src="/pilot.png"
-            alt="P2P Trading Intelligence"
-            className="w-[300px] object-contain rounded-lg"
-          />
+          <div className="w-[300px] h-[300px] bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <span className="text-8xl">📊</span>
+          </div>
           <div className="bg-green-0 flex flex-col justify-between">
             <div className="pb-6">
               <h2 className="text-3xl md:text-4xl font-bold">
