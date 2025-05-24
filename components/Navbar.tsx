@@ -1,66 +1,122 @@
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu";
-
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
-import { buttonVariants } from "./ui/button";
-import { ModeToggle } from "./mode-toggle";
-import { LogoIcon } from "./Icons";
-import { MobileNavFragment } from "@/components/MobileNavFragment";
-import { navbarLinksList, NavProps } from "@/config/nav";
-import { siteConfig } from "@/config/site";
-import Link from "next/link";
-const { title } = siteConfig;
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
+import { ThemeToggle } from "./theme-toggle";
 
 export const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+    setIsOpen(false);
+  };
+
   return (
-    <header className="sticky border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background">
-      <NavigationMenu className="mx-auto">
-        <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between ">
-          <NavigationMenuItem className="font-bold flex">
-            <a href="/" className="ml-2 font-bold text-xl flex">
-              <LogoIcon />
-              <span className="hidden md:block">{title}</span>
-            </a>
-          </NavigationMenuItem>
-
-          {/* mobile */}
-          <div className="flex md:hidden">
-            <ModeToggle />
-            <MobileNavFragment />
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-16 items-center justify-between">
+        {/* Logo */}
+        <div className="flex items-center space-x-2">
+          <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 py-1 rounded-md font-bold text-lg">
+            P2P
           </div>
+          <span className="font-semibold text-lg">Intelligence</span>
+        </div>
 
-          {/* desktop */}
-          <nav className="hidden md:flex gap-2">
-            {navbarLinksList.map((route: NavProps, i) => (
-              <Link
-                href={route.href}
-                key={i}
-                className={`text-[17px] ${buttonVariants({
-                  variant: "ghost",
-                })}`}
-              >
-                {route.label}
-              </Link>
-            ))}
-          </nav>
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-8">
+          <button
+            onClick={() => scrollToSection("features")}
+            className="text-sm font-medium hover:text-primary transition-colors"
+          >
+            Features
+          </button>
+          <button
+            onClick={() => scrollToSection("about")}
+            className="text-sm font-medium hover:text-primary transition-colors"
+          >
+            About
+          </button>
+          <button
+            onClick={() => scrollToSection("pricing")}
+            className="text-sm font-medium hover:text-primary transition-colors"
+          >
+            Pricing
+          </button>
+          <button
+            onClick={() => scrollToSection("faq")}
+            className="text-sm font-medium hover:text-primary transition-colors"
+          >
+            FAQ
+          </button>
+        </nav>
 
-          <div className="hidden md:flex gap-2">
-            <Link
-              href="https://github.com/leoMirandaa/shadcn-landing-page.git"
-              target="_blank"
-              className={`border ${buttonVariants({ variant: "secondary" })}`}
+        {/* Desktop Actions */}
+        <div className="hidden md:flex items-center space-x-4">
+          <ThemeToggle />
+          <Button variant="ghost" size="sm">
+            Sign In
+          </Button>
+          <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+            Start Free Trial
+          </Button>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <div className="md:hidden flex items-center space-x-2">
+          <ThemeToggle />
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </Button>
+        </div>
+      </div>
+
+      {/* Mobile Navigation */}
+      {isOpen && (
+        <div className="md:hidden border-t bg-background">
+          <div className="container py-4 space-y-4">
+            <button
+              onClick={() => scrollToSection("features")}
+              className="block w-full text-left py-2 text-sm font-medium hover:text-primary transition-colors"
             >
-              <GitHubLogoIcon className="mr-2 w-5 h-5" />
-              Github
-            </Link>
-
-            <ModeToggle />
+              Features
+            </button>
+            <button
+              onClick={() => scrollToSection("about")}
+              className="block w-full text-left py-2 text-sm font-medium hover:text-primary transition-colors"
+            >
+              About
+            </button>
+            <button
+              onClick={() => scrollToSection("pricing")}
+              className="block w-full text-left py-2 text-sm font-medium hover:text-primary transition-colors"
+            >
+              Pricing
+            </button>
+            <button
+              onClick={() => scrollToSection("faq")}
+              className="block w-full text-left py-2 text-sm font-medium hover:text-primary transition-colors"
+            >
+              FAQ
+            </button>
+            <div className="pt-4 space-y-2">
+              <Button variant="ghost" size="sm" className="w-full">
+                Sign In
+              </Button>
+              <Button size="sm" className="w-full bg-gradient-to-r from-blue-600 to-purple-600">
+                Start Free Trial
+              </Button>
+            </div>
           </div>
-        </NavigationMenuList>
-      </NavigationMenu>
+        </div>
+      )}
     </header>
   );
 };
