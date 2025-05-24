@@ -1,91 +1,85 @@
-import { Badge } from "./ui/badge";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import image from "../assets/growth.png";
-import image3 from "../assets/reflecting.png";
-import image4 from "../assets/looking-ahead.png";
-import Image, { StaticImageData } from "next/image";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-interface FeatureProps {
-  title: string;
-  description: string;
-  image: StaticImageData;
-}
-
-const features: FeatureProps[] = [
+const features = [
   {
-    title: "Responsive Design",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
-    image: image4,
+    title: "🤖 AI Terms Analysis",
+    description: "Gemini AI automatically extracts and analyzes trading requirements from human-readable terms with 99% accuracy.",
+    badge: "AI-Powered"
   },
   {
-    title: "Intuitive user interface",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
-    image: image3,
+    title: "⚡ Real-Time Monitoring", 
+    description: "50,000+ P2P advertisements analyzed every hour across 8 major exchanges for instant opportunities.",
+    badge: "Live Data"
   },
   {
-    title: "AI-Powered insights",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
-    image: image,
+    title: "🎯 Smart Risk Scoring",
+    description: "AI-powered risk assessment based on merchant history, terms complexity, and market conditions.",
+    badge: "Risk Management"
   },
-];
-
-const featureList: string[] = [
-  "Dark/Light theme",
-  "Reviews",
-  "Features",
-  "Pricing",
-  "Contact form",
-  "Our team",
-  "Responsive design",
-  "Newsletter",
-  "Minimalist",
+  {
+    title: "💱 Multi-Exchange Coverage",
+    description: "Connected to Binance, OKX, Bybit, KuCoin, Huobi, Gate.io, Kraken and more for comprehensive coverage.",
+    badge: "8+ Exchanges"
+  },
+  {
+    title: "📈 Arbitrage Detection", 
+    description: "Automatic detection of profitable price differences between exchanges with profit calculations.",
+    badge: "Profit Focused"
+  },
+  {
+    title: "🔔 Smart Alerts",
+    description: "Customizable notifications for opportunities matching your risk tolerance and profit targets.",
+    badge: "Personalized"
+  }
 ];
 
 export const Features = () => {
   return (
-    <section id="features" className="container py-24 sm:py-32 space-y-8">
+    <section className="container py-24 sm:py-32 space-y-8">
       <h2 className="text-3xl lg:text-4xl font-bold md:text-center">
-        Many{" "}
+        AI-Powered{" "}
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          Great Features
+          P2P Trading Intelligence
         </span>
       </h2>
-
       <div className="flex flex-wrap md:justify-center gap-4">
-        {featureList.map((feature: string) => (
-          <div key={feature}>
-            <Badge variant="secondary" className="text-sm">
-              {feature}
-            </Badge>
-          </div>
-        ))}
+        <div>
+          <Badge variant="secondary" className="text-sm">
+            Cross-Platform
+          </Badge>
+        </div>
+        <div>
+          <Badge variant="secondary" className="text-sm">
+            Real-Time
+          </Badge>
+        </div>
+        <div>
+          <Badge variant="secondary" className="text-sm">
+            AI-Enhanced
+          </Badge>
+        </div>
+        <div>
+          <Badge variant="secondary" className="text-sm">
+            Risk-Aware
+          </Badge>
+        </div>
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {features.map(({ title, description, image }: FeatureProps) => (
+        {features.map(({ title, description, badge }) => (
           <Card key={title}>
             <CardHeader>
-              <CardTitle>{title}</CardTitle>
+              <CardTitle className="flex items-center gap-2">
+                {title}
+                <Badge variant="outline" className="ml-auto">
+                  {badge}
+                </Badge>
+              </CardTitle>
             </CardHeader>
-
-            <CardContent>{description}</CardContent>
-
-            <CardFooter>
-              <Image
-                src={image}
-                alt="About feature"
-                className="w-[200px] lg:w-[300px] mx-auto"
-              />
-            </CardFooter>
+            <CardContent className="text-muted-foreground">
+              {description}
+            </CardContent>
           </Card>
         ))}
       </div>
