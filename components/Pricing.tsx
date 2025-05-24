@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
 
 const pricingData = [
   {
@@ -15,7 +15,11 @@ const pricingData = [
       "Community support"
     ],
     buttonText: "Get Started Free",
-    popular: false
+    popular: false,
+    ctaAction: () => {
+      // Scroll to contact or open signup modal
+      window.open("mailto:hello@p2pintelligence.com?subject=Free Plan Signup", "_blank");
+    }
   },
   {
     title: "Pro", 
@@ -31,7 +35,11 @@ const pricingData = [
       "Priority support"
     ],
     buttonText: "Start Pro Trial",
-    popular: true
+    popular: true,
+    ctaAction: () => {
+      // Open Stripe/payment or signup form
+      window.open("mailto:hello@p2pintelligence.com?subject=Pro Plan Trial", "_blank");
+    }
   },
   {
     title: "Enterprise",
@@ -47,13 +55,17 @@ const pricingData = [
       "Custom alerts"
     ],
     buttonText: "Contact Sales",
-    popular: false
+    popular: false,
+    ctaAction: () => {
+      // Open calendar booking or contact form
+      window.open("mailto:sales@p2pintelligence.com?subject=Enterprise Plan Inquiry", "_blank");
+    }
   }
 ];
 
 export const Pricing = () => {
   return (
-<section id="pricing" className="container py-24 sm:py-32 scroll-mt-20">
+    <section id="pricing" className="container py-24 sm:py-32 scroll-mt-20">
       <h2 className="text-3xl md:text-4xl font-bold text-center">
         Choose Your
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
@@ -66,14 +78,16 @@ export const Pricing = () => {
       </p>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {pricingData.map(({ title, price, description, features, buttonText, popular }) => (
+        {pricingData.map(({ title, price, description, features, buttonText, popular, ctaAction }) => (
           <Card 
             key={title}
-            className={`${popular ? "border-2 border-primary" : ""} relative`}
+            className={`${
+              popular ? "border-2 border-primary shadow-xl scale-105" : "hover:shadow-lg"
+            } relative transition-all duration-300 hover:scale-105 cursor-pointer group`}
           >
             {popular && (
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm">
+                <span className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-1 rounded-full text-sm font-medium">
                   Most Popular
                 </span>
               </div>
@@ -95,7 +109,7 @@ export const Pricing = () => {
               <ul className="space-y-2">
                 {features.map((feature) => (
                   <li key={feature} className="flex items-center">
-                    <Check className="text-green-500 mr-2 h-4 w-4" />
+                    <Check className="text-green-500 mr-2 h-4 w-4 flex-shrink-0" />
                     <span className="text-muted-foreground">{feature}</span>
                   </li>
                 ))}
@@ -104,10 +118,16 @@ export const Pricing = () => {
 
             <CardFooter>
               <Button 
-                className="w-full"
+                className={`w-full transition-all duration-300 group-hover:scale-105 ${
+                  popular 
+                    ? "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700" 
+                    : ""
+                }`}
                 variant={popular ? "default" : "outline"}
+                onClick={ctaAction}
               >
                 {buttonText}
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </CardFooter>
           </Card>
