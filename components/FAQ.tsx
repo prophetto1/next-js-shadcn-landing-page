@@ -1,3 +1,5 @@
+// src/components/FAQ.tsx
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const faqs = [
@@ -29,7 +31,7 @@ const faqs = [
 
 export const FAQ = () => {
   return (
-    <section id="faq" className="container py-24 sm:py-32">
+    <section id="faq" className="container py-24 sm:py-32 scroll-mt-20"> {/* Added scroll-mt and id */}
       <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
         Frequently Asked{" "}
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
@@ -39,6 +41,7 @@ export const FAQ = () => {
 
       <div className="grid gap-6 md:grid-cols-2">
         {faqs.map(({ question, answer }, index) => (
+          // Consider making these expandable/collapsible using ShadCN Accordion for better UX if answers are long
           <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
               <CardTitle className="text-lg md:text-xl">
