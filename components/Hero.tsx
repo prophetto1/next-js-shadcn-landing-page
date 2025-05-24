@@ -11,18 +11,18 @@ export const Hero = () => {
     <section id="hero" className="container grid lg:grid-cols-2 place-items-center py-20 md:py-32 gap-10 scroll-mt-20"> {/* Added id and scroll-mt */}
       <div className="text-center lg:text-start space-y-6">
         <main className="text-5xl md:text-6xl font-bold">
-          <h1 className="inline">
-            <span className="inline bg-gradient-to-r from-[#F596D3] to-[#D247BF] text-transparent bg-clip-text">
-              Find Profitable P2P Trades
-            </span>{" "}
-            Across 8+ Exchanges. Powered by
-          </h1>{" "}
-          <h2 className="inline">
-            <span className="inline bg-gradient-to-r from-[#61DAFB] via-[#1fc0f1] to-[#03a3d7] text-transparent bg-clip-text">
-              AI Intelligence.
-            </span>{" "}
-          </h2>
-        </main>
+  <h1 className="inline">
+    <span className="inline bg-gradient-to-r from-[#F596D3] to-[#D247BF] text-transparent bg-clip-text drop-shadow-sm">
+      Find Profitable P2P Trades
+    </span>{" "}
+    <span className="text-foreground">Across 8+ Exchanges. Powered by</span>
+  </h1>{" "}
+  <h2 className="inline">
+    <span className="inline bg-gradient-to-r from-[#61DAFB] via-[#1fc0f1] to-[#03a3d7] text-transparent bg-clip-text drop-shadow-sm">
+      AI Analytics.
+    </span>{" "}
+  </h2>
+</main>
         <p className="text-xl text-muted-foreground md:w-10/12 mx-auto lg:mx-0">
           Real-time arbitrage opportunities with AI risk scoring and automated terms analysis.
           It&apos;s like your Bloomberg Terminal for the P2P crypto market.
