@@ -4,51 +4,54 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import Link from "next/link";
 
-interface FAQProps {
-  question: string;
-  answer: string;
-  value: string;
-}
-
-const FAQList: FAQProps[] = [
+const faqs = [
   {
-    question: "Is this template free?",
-    answer: "Yes. It is a free ChadcnUI template.",
-    value: "item-1",
-  },
-  {
-    question: "Lorem ipsum dolor sit amet consectetur adipisicing elit?",
+    question: "What is P2P crypto trading?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam? Consectetur sapiente iste rerum reiciendis animi nihil nostrum sit quo, modi quod.",
-    value: "item-2",
+      "P2P (peer-to-peer) crypto trading allows you to buy and sell cryptocurrencies directly with other users, often at better rates than traditional exchanges. Our platform helps you find the most profitable opportunities across multiple P2P marketplaces.",
   },
   {
-    question:
-      "Lorem ipsum dolor sit amet  Consectetur natus dolores minus quibusdam?",
+    question: "How does the AI analysis work?",
     answer:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore qui nostrum reiciendis veritatis necessitatibus maxime quis ipsa vitae cumque quo?",
-    value: "item-3",
+      "Our Gemini AI automatically reads and analyzes thousands of P2P advertisements, extracting trading requirements, payment methods, and risk factors. It then scores each opportunity based on profit potential and execution probability.",
   },
   {
-    question: "Lorem ipsum dolor sit amet, consectetur adipisicing elit?",
-    answer: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
-    value: "item-4",
-  },
-  {
-    question:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur natus?",
+    question: "Which exchanges do you support?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam? Consectetur sapiente iste rerum reiciendis animi nihil nostrum sit quo, modi quod.",
-    value: "item-5",
+      "We currently support 8+ major exchanges including Binance, OKX, Bybit, KuCoin, Huobi, Gate.io, Kraken, and more. We&apos;re constantly adding new platforms based on user demand.",
+  },
+  {
+    question: "How accurate is the risk scoring?",
+    answer:
+      "Our AI risk scoring achieves 99% accuracy by analyzing merchant history, completion rates, trading terms complexity, and market conditions. Each opportunity is scored from low to high risk with detailed explanations.",
+  },
+  {
+    question: "Can I use this for arbitrage trading?",
+    answer:
+      "Absolutely! Our platform is specifically designed for arbitrage traders. We automatically detect price differences between exchanges and calculate potential profits, including fees and execution risks.",
+  },
+  {
+    question: "Do you store my trading data?",
+    answer:
+      "We only analyze public P2P advertisement data. We never access your personal trading accounts or store any sensitive information. Your privacy and security are our top priorities.",
+  },
+  {
+    question: "What&apos;s included in the free plan?",
+    answer:
+      "The free plan includes access to the top 10 daily opportunities, basic risk scoring, and coverage of 3 major exchanges (Binance, OKX, Bybit). Perfect for getting started with P2P trading intelligence.",
+  },
+  {
+    question: "How do I get started?",
+    answer:
+      "Simply sign up for a free account to start seeing profitable P2P opportunities immediately. No credit card required for the free tier. Upgrade to Pro when you&apos;re ready for unlimited access and advanced features.",
   },
 ];
 
 export const FAQ = () => {
   return (
     <section id="faq" className="container py-24 sm:py-32">
-      <h2 className="text-3xl md:text-4xl font-bold mb-4">
+      <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
         Frequently Asked{" "}
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
           Questions
@@ -56,8 +59,8 @@ export const FAQ = () => {
       </h2>
 
       <Accordion type="single" collapsible className="w-full AccordionRoot">
-        {FAQList.map(({ question, answer, value }: FAQProps) => (
-          <AccordionItem key={value} value={value}>
+        {faqs.map(({ question, answer }, index) => (
+          <AccordionItem key={index} value={`item-${index}`}>
             <AccordionTrigger className="text-left">
               {question}
             </AccordionTrigger>
@@ -66,16 +69,6 @@ export const FAQ = () => {
           </AccordionItem>
         ))}
       </Accordion>
-
-      <h3 className="font-medium mt-4">
-        Still have questions?{" "}
-        <Link
-          href="#"
-          className="text-primary transition-all border-primary hover:border-b-2"
-        >
-          Contact us
-        </Link>
-      </h3>
     </section>
   );
 };
