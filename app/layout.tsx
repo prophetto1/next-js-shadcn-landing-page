@@ -1,33 +1,22 @@
+// app/layout.tsx
+"use client"; // Add this if ThemeProvider or Navbar have client-side needs not handled by their own "use client"
+               // Often, ThemeProvider itself requires "use client"
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { Navbar } from "@/components/layout/Navbar"; // Assuming Navbar.tsx is in components/layout
+import { ThemeProvider } from "@/components/layout/theme-provider"; // Assuming you create this
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "P2P Intelligence - AI-Powered Crypto Trading Platform",
-  description: "Find profitable P2P trades across 8+ exchanges with AI risk scoring and automated terms analysis. Real-time arbitrage opportunities for crypto traders.",
-  keywords: ["P2P trading", "crypto arbitrage", "AI trading", "cryptocurrency", "trading intelligence", "risk scoring"],
-  authors: [{ name: "P2P Intelligence Team" }],
-  creator: "P2P Intelligence",
-  publisher: "P2P Intelligence",
-  openGraph: {
-    title: "P2P Intelligence - AI-Powered Crypto Trading",
-    description: "Find profitable P2P trades across 8+ exchanges with AI risk scoring and automated terms analysis.",
-    url: "https://p2pintelligence.com",
-    siteName: "P2P Intelligence",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "P2P Intelligence - AI-Powered Crypto Trading",
-    description: "Find profitable P2P trades across 8+ exchanges with AI risk scoring.",
-    creator: "@p2pintelligence",
-  },
-  robots: {
-    index: true,
-    follow: true,
+  // ... (rest of your metadata is good)
+  icons: { // Recommended way for favicons
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
   },
 };
 
@@ -38,12 +27,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-      </head>
-      <body className={cn("min-h-screen bg-background", inter.className)}>
-        {children}
+      <head /> {/* Favicons handled by metadata.icons or files in app/ directory */}
+      <body className={cn("min-h-screen bg-background font-sans antialiased", inter.className)}> {/* Added font-sans and antialiased for typical ShadCN look */}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="relative flex min-h-screen flex-col"> {/* Common wrapper */}
+            <Navbar />
+            <main className="flex-1"> {/* Ensure main content can grow */}
+              {children}
+            </main>
+            {/* <Footer /> You might add a footer here later */}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
