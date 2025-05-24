@@ -4,11 +4,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const statistics = [
   {
-    quantity: "50,000+",
+    quantity: "70,000+",
     description: "P2P ads analyzed daily",
   },
   {
-    quantity: "8+",
+    quantity: "10+",
     description: "Major exchanges supported",
   },
   {
@@ -35,7 +35,7 @@ export const About = () => {
                 <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
                   About{" "}
                 </span>
-                P2P Intelligence
+                P2P Analytics
               </h2>
             </div>
 

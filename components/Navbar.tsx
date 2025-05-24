@@ -36,7 +36,7 @@ export const Navbar = () => {
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 py-1 rounded-md font-bold text-lg">
             P2P
           </div>
-          <span className="font-semibold text-lg">Intelligence</span>
+          <span className="font-semibold text-lg">Analytics</span>
         </div>
 
         <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
