@@ -12,7 +12,7 @@ const fontSans = FontSans({
 
 export const metadata: Metadata = {
   title: "P2P Intelligence - AI-Powered Crypto Trading Platform",
-  description: "Find profitable P2P trades across 8+ exchanges with AI risk scoring and automated terms analysis. Real-time arbitrage opportunities for crypto traders.",
+  description: "Find profitable P2P trades across 8+ exchanges with AI risk scoring and automated terms analysis.",
 };
 
 export default function RootLayout({
