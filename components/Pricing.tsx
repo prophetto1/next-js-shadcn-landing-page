@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, ArrowRight } from "lucide-react";
+import { Check } from "lucide-react";
 
 const pricingData = [
   {
@@ -15,11 +15,7 @@ const pricingData = [
       "Community support"
     ],
     buttonText: "Get Started Free",
-    popular: false,
-    ctaAction: () => {
-      // Scroll to contact or open signup modal
-      window.open("mailto:hello@p2pintelligence.com?subject=Free Plan Signup", "_blank");
-    }
+    popular: false
   },
   {
     title: "Pro", 
@@ -35,11 +31,7 @@ const pricingData = [
       "Priority support"
     ],
     buttonText: "Start Pro Trial",
-    popular: true,
-    ctaAction: () => {
-      // Open Stripe/payment or signup form
-      window.open("mailto:hello@p2pintelligence.com?subject=Pro Plan Trial", "_blank");
-    }
+    popular: true
   },
   {
     title: "Enterprise",
@@ -55,11 +47,7 @@ const pricingData = [
       "Custom alerts"
     ],
     buttonText: "Contact Sales",
-    popular: false,
-    ctaAction: () => {
-      // Open calendar booking or contact form
-      window.open("mailto:sales@p2pintelligence.com?subject=Enterprise Plan Inquiry", "_blank");
-    }
+    popular: false
   }
 ];
 
@@ -78,12 +66,10 @@ export const Pricing = () => {
       </p>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {pricingData.map(({ title, price, description, features, buttonText, popular, ctaAction }) => (
+        {pricingData.map(({ title, price, description, features, buttonText, popular }) => (
           <Card 
             key={title}
-            className={`${
-              popular ? "border-2 border-primary shadow-xl scale-105" : "hover:shadow-lg"
-            } relative transition-all duration-300 hover:scale-105 cursor-pointer group`}
+            className={`${popular ? "border-2 border-primary shadow-xl scale-105" : "hover:shadow-lg"} relative transition-all duration-300 hover:scale-105`}
           >
             {popular && (
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
@@ -118,16 +104,14 @@ export const Pricing = () => {
 
             <CardFooter>
               <Button 
-                className={`w-full transition-all duration-300 group-hover:scale-105 ${
+                className={`w-full transition-all duration-300 ${
                   popular 
                     ? "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700" 
                     : ""
                 }`}
                 variant={popular ? "default" : "outline"}
-                onClick={ctaAction}
               >
                 {buttonText}
-                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </CardFooter>
           </Card>
