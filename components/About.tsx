@@ -1,61 +1,62 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "./ui/button";
+import { buttonVariants } from "./ui/button";
+// import { HeroCards } from "./HeroCards"; // Commented out temporarily
+import Link from "next/link";
 
-const statistics = [
-  {
-    quantity: "50,000+",
-    description: "P2P ads analyzed daily",
-  },
-  {
-    quantity: "8+",
-    description: "Major exchanges supported",
-  },
-  {
-    quantity: "100+",
-    description: "Fiat currencies tracked",
-  },
-  {
-    quantity: "99%",
-    description: "AI accuracy rate",
-  },
-];
-
-export const About = () => {
+export const Hero = () => {
   return (
-    <section
-      id="about"
-      className="container py-24 sm:py-32"
-    >
-      <div className="bg-muted/50 border rounded-lg py-12">
-        <div className="px-6">
-          <div className="flex flex-col justify-center items-center text-center space-y-8">
-            <div className="pb-6">
-              <h2 className="text-3xl md:text-4xl font-bold">
-                <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-                  About{" "}
-                </span>
-                P2P Intelligence
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-4xl">
-              {statistics.map(({ quantity, description }) => (
-                <Card key={description} className="hover:shadow-lg transition-shadow duration-300">
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-center text-3xl font-bold text-primary">
-                      {quantity}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="text-center pb-2">
-                    <p className="text-sm text-muted-foreground">
-                      {description}
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
+    <section className="container grid lg:grid-cols-2 place-items-center py-20 md:py-32 gap-10">
+      <div className="text-center lg:text-start space-y-6">
+        <main className="text-5xl md:text-6xl font-bold">
+          <h1 className="inline">
+            <span className="inline bg-gradient-to-r from-[#F596D3] to-[#D247BF] text-transparent bg-clip-text">
+              Find Profitable P2P Trades
+            </span>{" "}
+            Across 8+ Exchanges. Powered by
+          </h1>{" "}
+          <h2 className="inline">
+            <span className="inline bg-gradient-to-r from-[#61DAFB] via-[#1fc0f1] to-[#03a3d7] text-transparent bg-clip-text">
+              AI Intelligence.
+            </span>{" "}
+          </h2>
+        </main>
+        <p className="text-xl text-muted-foreground md:w-10/12 mx-auto lg:mx-0">
+          Real-time arbitrage opportunities with AI risk scoring and automated terms analysis.
+          It&apos;s like your Bloomberg Terminal for the P2P crypto market.
+        </p>
+        <div className="space-y-4 md:space-y-0 md:space-x-4">
+          <Link href="#pricing">
+            <Button className="w-full md:w-1/3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover:scale-105">
+              🔥 View Live Opportunities
+            </Button>
+          </Link>
+          <Link href="#features">
+            <Button
+              variant="outline"
+              className="w-full md:w-1/3 hover:bg-primary/10 transition-all duration-300"
+            >
+              📊 See Demo
+            </Button>
+          </Link>
         </div>
       </div>
+      
+      {/* Hero cards sections - Temporarily commented out */}
+      {/* <div className="z-10">
+        <HeroCards />
+      </div> */}
+      
+      {/* Placeholder for hero image/cards */}
+      <div className="flex items-center justify-center">
+        <div className="bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg p-8 text-center">
+          <div className="text-6xl mb-4">📊</div>
+          <p className="text-lg font-semibold">Live Trading Dashboard</p>
+          <p className="text-muted-foreground">Coming Soon</p>
+        </div>
+      </div>
+      
+      {/* Shadow effect */}
+      <div className="shadow"></div>
     </section>
   );
 };
