@@ -13,31 +13,6 @@ const fontSans = FontSans({
 export const metadata: Metadata = {
   title: "P2P Intelligence - AI-Powered Crypto Trading Platform",
   description: "Find profitable P2P trades across 8+ exchanges with AI risk scoring and automated terms analysis. Real-time arbitrage opportunities for crypto traders.",
-  keywords: ["P2P trading", "crypto arbitrage", "AI trading", "cryptocurrency", "trading intelligence", "risk scoring"],
-  authors: [{ name: "P2P Intelligence Team" }],
-  creator: "P2P Intelligence",
-  publisher: "P2P Intelligence",
-  openGraph: {
-    title: "P2P Intelligence - AI-Powered Crypto Trading",
-    description: "Find profitable P2P trades across 8+ exchanges with AI risk scoring and automated terms analysis.",
-    url: "https://p2pintelligence.com",
-    siteName: "P2P Intelligence",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "P2P Intelligence - AI-Powered Crypto Trading",
-    description: "Find profitable P2P trades across 8+ exchanges with AI risk scoring.",
-    creator: "@p2pintelligence",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
 };
 
 export default function RootLayout({
