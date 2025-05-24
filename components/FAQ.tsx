@@ -37,7 +37,7 @@ const faqs = [
       "We only analyze public P2P advertisement data. We never access your personal trading accounts or store any sensitive information. Your privacy and security are our top priorities.",
   },
   {
-    question: "What&apos;s included in the free plan?",
+    question: "What's included in the free plan?",
     answer:
       "The free plan includes access to the top 10 daily opportunities, basic risk scoring, and coverage of 3 major exchanges (Binance, OKX, Bybit). Perfect for getting started with P2P trading intelligence.",
   },
