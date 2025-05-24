@@ -1,6 +1,6 @@
 import { Button } from "./ui/button";
 import { buttonVariants } from "./ui/button";
-import { HeroCards } from "./HeroCards";
+// import { HeroCards } from "./HeroCards"; // Commented out temporarily
 import Link from "next/link";
 
 export const Hero = () => {
@@ -21,7 +21,7 @@ export const Hero = () => {
           </h2>
         </main>
         <p className="text-xl text-muted-foreground md:w-10/12 mx-auto lg:mx-0">
-          Real-time arbitrage opportunities with AI risk scoring and automated terms analysis. 
+          Real-time arbitrage opportunities with AI risk scoring and automated terms analysis.
           It&apos;s like your Bloomberg Terminal for the P2P crypto market.
         </p>
         <div className="space-y-4 md:space-y-0 md:space-x-4">
@@ -40,10 +40,21 @@ export const Hero = () => {
           </Link>
         </div>
       </div>
-      {/* Hero cards sections */}
-      <div className="z-10">
+      
+      {/* Hero cards sections - Temporarily commented out */}
+      {/* <div className="z-10">
         <HeroCards />
+      </div> */}
+      
+      {/* Placeholder for hero image/cards */}
+      <div className="flex items-center justify-center">
+        <div className="bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg p-8 text-center">
+          <div className="text-6xl mb-4">📊</div>
+          <p className="text-lg font-semibold">Live Trading Dashboard</p>
+          <p className="text-muted-foreground">Coming Soon</p>
+        </div>
       </div>
+      
       {/* Shadow effect */}
       <div className="shadow"></div>
     </section>
