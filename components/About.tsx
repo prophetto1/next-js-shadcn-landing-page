@@ -1,3 +1,5 @@
+// src/components/About.tsx
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const statistics = [
@@ -23,7 +25,7 @@ export const About = () => {
   return (
     <section
       id="about"
-      className="container py-24 sm:py-32"
+      className="container py-24 sm:py-32 scroll-mt-20" // Added scroll-mt for fixed navbar
     >
       <div className="bg-muted/50 border rounded-lg py-12">
         <div className="px-6">
