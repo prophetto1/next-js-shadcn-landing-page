@@ -62,7 +62,7 @@ export const Pricing = () => {
         </span>
       </h2>
       <p className="text-xl text-muted-foreground text-center mt-4 mb-8">
-        Start free, upgrade when you're profitable
+        Start free, upgrade when you&apos;re profitable
       </p>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
