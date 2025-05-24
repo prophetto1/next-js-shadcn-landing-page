@@ -40,16 +40,6 @@ export const About = () => {
                 </span>
                 P2P Intelligence
               </h2>
-              <p className="text-xl text-muted-foreground mt-4">
-                We&apos;re revolutionizing P2P crypto trading with AI-powered market intelligence. 
-                Our platform analyzes thousands of advertisements across major exchanges to find 
-                profitable arbitrage opportunities while assessing risks automatically.
-              </p>
-              <p className="text-lg text-muted-foreground mt-4">
-                Built by traders, for traders - we understand the challenges of manual P2P analysis. 
-                Our Gemini AI processes complex trading terms, calculates execution probabilities, 
-                and identifies the most profitable opportunities in real-time.
-              </p>
             </div>
 
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
