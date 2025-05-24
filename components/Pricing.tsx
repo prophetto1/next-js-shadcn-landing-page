@@ -4,7 +4,17 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
 
-const pricingData = [
+interface PricingPlan {
+  title: string;
+  price: string;
+  description: string;
+  features: string[];
+  buttonText: string;
+  popular: boolean;
+  action: () => void;
+}
+
+const pricingData: PricingPlan[] = [
   {
     title: "Free",
     price: "$0",
@@ -19,7 +29,9 @@ const pricingData = [
     buttonText: "Get Started Free",
     popular: false,
     action: () => {
-      window.open("mailto:hello@p2pintelligence.com?subject=Free Plan Signup", "_blank");
+      if (typeof window !== 'undefined') {
+        window.open("mailto:hello@p2pintelligence.com?subject=Free Plan Signup", "_blank");
+      }
     }
   },
   {
@@ -38,7 +50,9 @@ const pricingData = [
     buttonText: "Start Pro Trial",
     popular: true,
     action: () => {
-      window.open("mailto:hello@p2pintelligence.com?subject=Pro Plan Trial", "_blank");
+      if (typeof window !== 'undefined') {
+        window.open("mailto:hello@p2pintelligence.com?subject=Pro Plan Trial", "_blank");
+      }
     }
   },
   {
@@ -57,7 +71,9 @@ const pricingData = [
     buttonText: "Contact Sales",
     popular: false,
     action: () => {
-      window.open("mailto:sales@p2pintelligence.com?subject=Enterprise Plan Inquiry", "_blank");
+      if (typeof window !== 'undefined') {
+        window.open("mailto:sales@p2pintelligence.com?subject=Enterprise Plan Inquiry", "_blank");
+      }
     }
   }
 ];
